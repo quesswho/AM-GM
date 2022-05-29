@@ -16,7 +16,7 @@
 	with the equality if and only if $a_1=a_2=\cdots=a_n$.
 	
 	\section{Cauchy's Forward-backward induction proof}
-	The FB (Forward-backward) induction is a rather rare variant of proof by induction based on the idea of first proving the base case as usual such as $P(2)$. Then proving for arbitrary large n such that if $P(n)$ is true then $P(2n)$ which follows recursively that $P(2^k)$ must be true. The final step is to show that $P(n) \Rightarrow P(n-1)$ which will prove that $P(n)$ holds for any $n \geq 2$.
+	The FB (Forward-backward) induction is a rare variant of proof by induction based on the idea of first proving the base case as usual such as $P(2)$. Then proving for an arbitrary large n such that if $P(n)$ is true then $P(2n)$ which follows recursively that $P(2^k)$ must be true. The final step is to show that $P(n) \Rightarrow P(n-1)$ which will prove that $P(n)$ holds for any $n \geq 2$.
 	
 	\begin{quote}
 		\textit{i}). Base case.\\
@@ -24,7 +24,7 @@
 		\textit{iii}). $P(n) \Rightarrow P(n-1)$.
 	\end{quote}
 	\noindent
-	Step \textit{i}): The base case is when $n=2$ because this is the smallest n for which there is an inequality, $n=1$ would give us an equality. Given $n=2$, the AM-GM inequality implies:
+	Step \textit{i}): The base case is $n=2$ because this is the smallest $n$ for which there is an inequality, $n=1$ would give us an equality. Given $n=2$, the AM-GM inequality implies:
 	\begin{equation}
 		\frac{a+b}{2} \geq \sqrt{ab}
 		\label{basecasen2}
@@ -60,7 +60,7 @@
 	\begin{align*}
 		a_1 + \cdots + a_{2n} \geq 2n\sqrt[2n]{a_1\cdots a_{2n}}
 	\end{align*}
-	We have now shown that if 
+	We have shown that if 
 	$$\frac{a_1+ \cdots + a_n}{n} \geq \sqrt[n]{a_1\cdots a_n}$$ 
 	then 
 	$$\frac{a_1+ \cdots + a_{2n}}{2n} \geq \sqrt[2n]{a_1\cdots a_{2n}}.$$ \qed
@@ -70,7 +70,7 @@
 		\frac{a_1+a_2+ \cdots + a_n}{n} \geq \sqrt[n]{a_1a_2 \cdots a_n}
 		\label{step3assumption}
 	\end{equation}
-	To prove P(n-1) we start with $\frac{a_1+\cdots +a_{n-1}}{n-1}$ and then prove the right side of the inequality. In order to perform the induction we must somehow turn the expression in to a form such that we can apply inequality \ref{step3assumption}. To do this we may let $$\frac{a_1+\cdots +a_{n-1}}{n-1}=\frac{a_1+\cdots +a_n}{n}$$ 
+	To prove P(n-1) we start with $\frac{a_1+\cdots +a_{n-1}}{n-1}$ and then prove the right side of the inequality. In order to perform the induction we must somehow turn the expression in to a form such that we can apply inequality \ref{step3assumption}. This can be achieved by letting $$\frac{a_1+\cdots +a_{n-1}}{n-1}=\frac{a_1+\cdots +a_n}{n}$$ 
 	and then solve for $a_n$. This means that we can express $\frac{a_1+\cdots +a_{n-1}}{n-1}$ in a way such that we can use the induction assumption (\ref{step3assumption}).
 	\begin{align*}
 		&\frac{a_1+\cdots +a_{n-1}}{n-1}=\frac{a_1+\cdots +a_n}{n} \\
@@ -87,8 +87,7 @@
 	\end{align*}
 	Which proves that $n-1$ must also be true. \qed
 	\newline
-	We have now completed the forward-backward induction proof which proves the AM-GM inequality for $n \geq 2$, the $n=1$ case is trivial as $\frac{a}{1}=a^1$, thus we have proven that for positive reals $a_1,a_2, \cdots, a_n$:
-	
+	We have now completed the forward-backward induction proof which proves the AM-GM inequality for $n \geq 2$. The $n=1$ case is trivial as $\frac{a}{1}=a^1$, thus we have proven that for positive reals $a_1,a_2, \cdots, a_n$:
 	\[ \frac{a_1+a_2+ \cdots + a_n}{n} \geq \sqrt[n]{a_1a_2 \cdots a_n}  \tag*{for $n \geq 1$}   \]
 	\qed
 \end{document}
