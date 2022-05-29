@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{amsmath,amsthm}
+\usepackage{mathtools}
+
+\title{AM-GM Inequality Done Right}
+\author{Sebastian Miles}
+\date{}
+
+\begin{document}
+	\maketitle
+	\section{Statement}
+	Given the positive reals $a_1,a_2, \cdots, a_n$ the following inequality holds
+	\begin{align*}
+		\frac{a_1+a_2+ \cdots + a_n}{n} \geq \sqrt[n]{a_1a_2 \cdots a_n}
+	\end{align*}
+	with the equality if and only if $a_1=a_2=\cdots=a_n$.
+	
+	\section{Cauchy's Forward-backward induction proof}
+	The FB (Forward-backward) induction is a rather rare variant of proof by induction based on the idea of first proving the base case as usual such as $P(2)$. Then proving for arbitrary large n such that if $P(n)$ is true then $P(2n)$ which follows recursively that $P(2^k)$ must be true. The final step is to show that $P(n) \Rightarrow P(n-1)$ which will prove that $P(n)$ holds for any $n \geq 2$.
+	
+	\begin{quote}
+		\textit{i}). Base case.\\
+		\textit{ii}). $P(n) \Rightarrow P(2n)$.\\
+		\textit{iii}). $P(n) \Rightarrow P(n-1)$.
+	\end{quote}
+	\noindent
+	Step \textit{i}): The base case is when $n=2$ because this is the smallest n for which there is an inequality, $n=1$ would give us an equality. Given $n=2$, the AM-GM inequality implies:
+	\begin{equation}
+		\frac{a+b}{2} \geq \sqrt{ab}
+		\label{basecasen2}
+	\end{equation}
+ 	\noindent
+	To prove this we square both sides which yields
+	\begin{align*}
+		\frac{a^2+2ab+b^2}{4} \geq ab &\iff a^2+2ab+b^2 \geq 4ab& \\
+		a^2-2ab+b^2 \geq 0 &\iff (a-b)^2 \geq 0.&
+	\end{align*}
+	Because $(a-b)^2 \geq 0$ is obviously true, we conclude that
+	$\frac{a+b}{2} \geq \sqrt{ab}$
+	must be true. \qed
+	\newline
+	Step \textit{ii}): To perform this step, we first suppose $P(n)$ is true then we prove that $P(2n)$ must be true. Suppose for positive reals $a_1,a_2, \cdots, a_n$ that
+	\begin{align*}
+		\frac{a_1+a_2+ \cdots + a_n}{n} \geq \sqrt[n]{a_1a_2 \cdots a_n}
+	\end{align*}
+	holds. Then equivalently we have
+	\begin{equation}
+		a_1+a_2+ \cdots + a_n \geq n\sqrt[n]{a_1a_2 \cdots a_n}
+		\label{cauchyp2n}
+	\end{equation}
+	We start with the sum $a_1+\cdots+a_{2n}$ and then prove for $2n$:
+	\begin{align*}
+		a_1+\cdots+a_n+a_{n+1}+\cdots+a_{2n} \geq n\sqrt[n]{a_1\cdots a_n} + n\sqrt[n]{a_{n+1}\cdots a_{2n}}
+	\end{align*}
+	Here we use the fact that the sum can be split up in to two parts $a_1 + \cdots + a_n$ and $a_{n+1} + \cdots + a_{2n}$, then we apply the inequality from equation \ref{cauchyp2n} on each part. Recall the base case inequality (\ref{basecasen2}), this can be slightly modified to the form $a+b \geq 2\sqrt{ab}$ which we can apply directly to the inequality above.
+	\begin{align*}
+		n\sqrt[n]{a_1\cdots a_n} + n\sqrt[n]{a_{n+1}\cdots a_{2n}} \geq 2\sqrt{n^2\sqrt[n]{a_1\cdots a_{2n}}} = 2n\sqrt[2n]{a_1\cdots a_{2n}}
+	\end{align*}
+	This means that we have the following inequality
+	\begin{align*}
+		a_1 + \cdots + a_{2n} \geq 2n\sqrt[2n]{a_1\cdots a_{2n}}
+	\end{align*}
+	We have now shown that if 
+	$$\frac{a_1+ \cdots + a_n}{n} \geq \sqrt[n]{a_1\cdots a_n}$$ 
+	then 
+	$$\frac{a_1+ \cdots + a_{2n}}{2n} \geq \sqrt[2n]{a_1\cdots a_{2n}}.$$ \qed
+	\newline
+	Step \textit{iii}): Suppose for positive reals $a_1,a_2, \cdots, a_n$ that
+	\begin{equation}
+		\frac{a_1+a_2+ \cdots + a_n}{n} \geq \sqrt[n]{a_1a_2 \cdots a_n}
+		\label{step3assumption}
+	\end{equation}
+	To prove P(n-1) we start with $\frac{a_1+\cdots +a_{n-1}}{n-1}$ and then prove the right side of the inequality. In order to perform the induction we must somehow turn the expression in to a form such that we can apply inequality \ref{step3assumption}. To do this we may let $$\frac{a_1+\cdots +a_{n-1}}{n-1}=\frac{a_1+\cdots +a_n}{n}$$ 
+	and then solve for $a_n$. This means that we can express $\frac{a_1+\cdots +a_{n-1}}{n-1}$ in a way such that we can use the induction assumption (\ref{step3assumption}).
+	\begin{align*}
+		&\frac{a_1+\cdots +a_{n-1}}{n-1}=\frac{a_1+\cdots +a_n}{n} \\
+		\iff& n(a_1+\cdots +a_{n-1})=(n-1)(a_1+\cdots +a_n) \\
+		\iff& \frac{a_1+\cdots +a_{n-1}}{n-1}=a_n
+	\end{align*}
+	Because we have $$\frac{a_1+\cdots +a_{n-1}}{n-1}=\frac{a_1+\cdots +a_n}{n}$$ when $\frac{a_1+\cdots +a_{n-1}}{n-1}=a_n$ it means that we have
+	\begin{align*}
+		\frac{a_1+\cdots +a_{n}}{n} &\geq \sqrt[n]{a_1\cdots a_n} \\
+		\frac{a_1+\cdots +a_{n-1}}{n-1} &\geq \sqrt[n]{a_1\cdots a_{n-1} \cdot \frac{a_1+\cdots +a_{n-1}}{n-1}}\\
+		\left(\frac{a_1+\cdots +a_{n-1}}{n-1}\right)^n &\geq a_1\cdots a_{n-1} \cdot \frac{a_1+\cdots +a_{n-1}}{n-1} \\
+		\left(\frac{a_1+\cdots +a_{n-1}}{n-1}\right)^{n-1} &\geq a_1\cdots a_{n-1}\\
+		\frac{a_1+\cdots +a_{n-1}}{n-1} &\geq \sqrt[n-1]{a_1\cdots a_{n-1}}
+	\end{align*}
+	Which proves that $n-1$ must also be true. \qed
+	\newline
+	We have now completed the forward-backward induction proof which proves the AM-GM inequality for $n \geq 2$, the $n=1$ case is trivial as $\frac{a}{1}=a^1$, thus we have proven that for positive reals $a_1,a_2, \cdots, a_n$:
+	
+	\[ \frac{a_1+a_2+ \cdots + a_n}{n} \geq \sqrt[n]{a_1a_2 \cdots a_n}  \tag*{for $n \geq 1$}   \]
+	\qed
+\end{document}
